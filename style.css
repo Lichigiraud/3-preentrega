@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Smokum&display=swap');
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.header{
+    font-family: 'Smokum', cursive;
+    background-color: darkgray;
+}
+.presentacion{
+    text-align: center;
+}
+.titulo{
+    text-decoration: underline;
+    font-size: 80px;
+}
+.sed{
+    color: white;
+}
+.tituloDesc{
+    font-size: 40px;
+}
+.slogan{
+    font-size: 50px;
+}
+.guardar{
+    border-radius: 5px;
+    background-color: rgb(43, 43, 245);
+    color: white;
+    padding: 10px;
+    border: 0;
+    
+}
+.card{
+    width: 18rem;
+}
+
+.card-body{
+    background-color: coral;
+
+}
