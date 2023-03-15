@@ -1,83 +1,89 @@
+
 const producto = [
     {
         titulo: "Fernet Branca", 
         precio: 2000,
+        imagen: "Assets/FernetBranca.jpg",
+        "id": 1
     },
     {
         titulo: "Fernet Buhero Negro", 
         precio: 1600,
+        imagen: "Assets/FernetBN.jpg",
+        "id": 2
     },
     {
-        nombre: "Vodka Smirnoff", 
+        titulo: "Vodka Smirnoff", 
         precio: 1750,
+        imagen: "Assets/vodka.jpg",
+        "id": 3
     },
     {
-        nombre: "Vino Termidor", 
+        titulo: "Vino Termidor", 
         precio: 725,
+        imagen: "Assets/termidor.jpg",
+        "id": 4
     },
     {
-        nombre: "Jaggermeister",
+        titulo: "Jaggermeister",
         precio: 7000,
+        imagen: "Assets/jagger.jpg",
+        "id": 5
     },
     {
-        nombre: "Gin Bombay",
+        titulo: "Gin Bombay",
         precio: 6000,
+        imagen: "Assets/bombay.jpg",
+        "id": 6
     },
     {
-        nombre: "Cerveza Andes rubia X6" ,
+        titulo: "Cerveza Andes rubia X6" ,
         precio: 1500,
+        imagen: "Assets/andes.jpg",
+        "id": 7
     } 
 ];
-const tarjeta = document.getElementById('tarjeta');
 
-const boton1 = document.getElementById('1');
-const productoBranca = producto [0]
-boton1.addEventListener('click', function()
-    {
-        localStorage.setItem('datosProducto1', JSON.stringify(productoBranca));
+const productosDiv = document.getElementById("productos");
+
+producto.forEach(bebida => {
+const card = `
+        <div class="card">
+        <img src="${bebida.imagen}" alt="${bebida.titulo}">
+        <h2>${bebida.titulo}</h2>
+        <p>${bebida.precio}</p>
+        <button class="guardar" id="${bebida.id}">Añadir al carrito</button>
+        </div>`;
+productosDiv.insertAdjacentHTML("beforeend", card);
+
+    const boton = document.getElementById(bebida.id);
+    boton.addEventListener("click", function() {
+
+    const productoJSON = {
+        id: bebida.id,
+        titulo: bebida.titulo,
+        precio: bebida.precio,
+        imagen: bebida.imagen,
+        cantidad: 1
+    };
+
+
+    const clave = "producto_" + bebida.id;
+    const productoTexto = JSON.stringify(productoJSON);
+    localStorage.setItem(clave, productoTexto);
+});
+});
+
+
+function buscarProductoPorNombre(nombre) {
+    return producto.filter(function(p) {
+        return p.titulo.toLowerCase().indexOf(nombre.toLowerCase()) !== -1;
     });
+}
+const input = document.getElementById('buscar-input');
 
-
-const productoBN = producto [1]
-const boton2 = document.getElementById('2');
-boton2.addEventListener('click', function()
-    {
-        localStorage.setItem('datosProducto2', JSON.stringify(productoBN));
-    });
-
-const productoVodka = producto [2]
-const boton3 = document.getElementById('3');
-boton3.addEventListener('click', function()
-    {
-        localStorage.setItem('datosProducto3', JSON.stringify(productoVodka));
-    });
-
-
-const productoTermi = producto [3]
-const boton4 = document.getElementById('4');
-boton4.addEventListener('click', function()
-    {
-        localStorage.setItem('datosProducto4', JSON.stringify(productoTermi));
-    });
-
-const productoJagger = producto [4]
-const boton5 = document.getElementById('5');
-boton5.addEventListener('click', function()
-    {
-        localStorage.setItem('datosProducto5', JSON.stringify(productoJagger));
-    });
-
-const productoBombay = producto [5]
-const boton6 = document.getElementById('6');
-boton6.addEventListener('click', function()
-    {
-        localStorage.setItem('datosProducto6', JSON.stringify(productoBombay));
-    });
-
-const productoCAndes= producto [6]
-const boton7 = document.getElementById('7');
-boton7.addEventListener('click', function()
-    {
-        localStorage.setItem('datosProducto7', JSON.stringify(productoCAndes));
-    });
-
+input.addEventListener('input', function() {
+    const nombre = input.value;
+    const productosEncontrados = buscarProductoPorNombre(nombre);
+    
+});
