@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Smokum&display=swap');
-*{
+/* *{
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-}
+} */
 
 .header{
     font-family: 'Smokum', cursive;
@@ -35,9 +35,19 @@
 }
 .card{
     width: 18rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    
 }
-
+.tarjeta{
+    padding: 50px;
+}
 .card-body{
     background-color: coral;
 
+}
+.cardTitle{
+    font-size: 15px;
 }
